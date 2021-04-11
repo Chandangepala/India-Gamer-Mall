@@ -10,43 +10,8 @@
     android:background="@drawable/background"
     >
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerGameInfo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <include layout="@layout/game_item_card"/>
-
-        <include layout="@layout/game_item_card"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <include layout="@layout/game_item_card"/>
-
-        <include layout="@layout/game_item_card"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <include layout="@layout/game_item_card"/>
-
-        <include layout="@layout/game_item_card"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <include layout="@layout/game_item_card"/>
-
-        <include layout="@layout/game_item_card"/>
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

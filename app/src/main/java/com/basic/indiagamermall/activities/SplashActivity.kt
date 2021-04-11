@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed(Runnable {
-            var iNext =  Intent(applicationContext, MainActivity::class.java);
+            var iNext =  Intent(applicationContext, RegistrationActivity::class.java);
             startActivity(iNext)
             finish() },700)
     }
