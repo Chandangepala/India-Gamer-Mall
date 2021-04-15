@@ -4,11 +4,12 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
-    app:cardElevation="5dp"
+    app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
-        android:layout_width="175dp"
+        android:id="@+id/linearLayoutGame"
+        android:layout_width="@dimen/dim_175"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
@@ -29,6 +30,6 @@
             android:padding="5dp"
             android:text="Membership"
             android:textColor="@color/black"
-            android:textSize="16dp"/>
+            android:textSize="@dimen/font_size_15"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

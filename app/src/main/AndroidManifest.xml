@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IndiaGamerMall">
-        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.GameSchemeActivity"></activity>
+        <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.RegistrationActivity" />
         <activity
             android:name=".activities.SplashActivity"

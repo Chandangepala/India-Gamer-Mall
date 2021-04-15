@@ -1,15 +1,21 @@
 package com.basic.indiagamermall.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.basic.indiagamermall.R
+import com.basic.indiagamermall.activities.GameSchemeActivity
+import com.basic.indiagamermall.activities.MainActivity
 import com.basic.indiagamermall.models.GameInfo
 
-class StaggeredRecyclerGameInfoAdapter(private val arrGameInfoList: ArrayList<GameInfo>)
+class StaggeredRecyclerGameInfoAdapter(val context: Context,private val arrGameInfoList: ArrayList<GameInfo>)
     :RecyclerView.Adapter<StaggeredRecyclerGameInfoAdapter.GameInfoViewHolder>()
 {
 
@@ -26,10 +32,15 @@ class StaggeredRecyclerGameInfoAdapter(private val arrGameInfoList: ArrayList<Ga
     override fun onBindViewHolder(holder: GameInfoViewHolder, position: Int) {
         holder.imgGame.setImageResource(arrGameInfoList.get(position).gameImage)
         holder.txtGameName.setText(arrGameInfoList.get(position).gameName)
+        holder.linearLayoutGame.setOnClickListener{
+            val iGameSchemeActivity = Intent(context, GameSchemeActivity :: class.java)
+            context.startActivity(iGameSchemeActivity)
+        }
     }
 
     class GameInfoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val imgGame = itemView.findViewById<ImageView>(R.id.imgGame);
+        val imgGame = itemView.findViewById<ImageView>(R.id.imgGame)
         val txtGameName = itemView.findViewById<TextView>(R.id.txtGameName)
+        val linearLayoutGame = itemView.findViewById<LinearLayout>(R.id.linearLayoutGame)
     }
 }

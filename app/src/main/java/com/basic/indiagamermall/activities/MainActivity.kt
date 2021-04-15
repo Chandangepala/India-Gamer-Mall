@@ -47,6 +47,6 @@ class MainActivity : AppCompatActivity() {
         recyclerGameInfo.layoutManager = StaggeredGridLayoutManager(2,
             StaggeredGridLayoutManager.VERTICAL)
 
-        recyclerGameInfo.adapter = StaggeredRecyclerGameInfoAdapter(arrGameInfoList)
+        recyclerGameInfo.adapter = StaggeredRecyclerGameInfoAdapter(this,arrGameInfoList)
     }
 }

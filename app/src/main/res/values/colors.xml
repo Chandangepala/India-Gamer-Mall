@@ -13,4 +13,7 @@
     <color name="darkBlack">#2E3339</color>
     <color name="lightBlack">#3E4750</color>
     <color name="darkBlue">#2784c7</color>
+    <color name="yellowMusturd">#EDB708</color>
+    <color name="lightYellowMusturd">#FFF2C4</color>
+
 </resources>
