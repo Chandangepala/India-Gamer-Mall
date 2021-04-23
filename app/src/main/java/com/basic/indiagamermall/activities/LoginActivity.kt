@@ -18,11 +18,13 @@ class LoginActivity : AppCompatActivity() {
 
         imgSignIn.setOnClickListener{
             val iMainActivity = Intent(this, MainActivity :: class.java)
+            finish()
             startActivity(iMainActivity)
         }
 
         txtSignUp.setOnClickListener{
             val iLoginActivity = Intent(this, RegistrationActivity :: class.java)
+            finish()
             startActivity(iLoginActivity)
         }
     }
