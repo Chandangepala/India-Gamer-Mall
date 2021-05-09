@@ -127,7 +127,7 @@
                     android:background="@android:color/transparent"
                     android:cursorVisible="true"
                     android:fontFamily="@font/cocomat_light"
-                    android:hint="Email"
+                    android:hint="User Name/ Email"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     android:maxLength="10"

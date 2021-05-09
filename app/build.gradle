@@ -42,4 +42,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //lib for auto scroll viewpager...
+    implementation 'com.github.pzienowicz:androidx-auto-scroll-view-pager:1.2.0'
 }
