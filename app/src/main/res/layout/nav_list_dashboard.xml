@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greyLine" />
+
+        <TextView
+            android:id="@+id/txtMyOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_sidemenu"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_13sdp"
+            android:text="My Orders"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:fontFamily="@font/cocomat_light"
+            app:drawableStartCompat="@drawable/ic_baseline_list_alt_24"
+            app:drawableLeftCompat="@drawable/ic_baseline_list_alt_24" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greyLine" />
+
+        <TextView
+            android:id="@+id/txtBecomeReseller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_sidemenu"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_13sdp"
+            android:text="Become a Reseller"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:fontFamily="@font/cocomat_light"
+            app:drawableStartCompat="@drawable/ic_whatsapp"
+            app:drawableLeftCompat="@drawable/ic_whatsapp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greyLine" />
+
+        <TextView
+            android:id="@+id/txtRateUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_sidemenu"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_13sdp"
+            android:text="Rate Us"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:fontFamily="@font/cocomat_light"
+            app:drawableStartCompat="@drawable/ic_outline_rate_review_24"
+            app:drawableLeftCompat="@drawable/ic_outline_rate_review_24" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greyLine" />
+
+        <TextView
+            android:id="@+id/txtShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_sidemenu"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_13sdp"
+            android:text="Share"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:fontFamily="@font/cocomat_light"
+            app:drawableStartCompat="@drawable/ic_outline_share_24"
+            app:drawableLeftCompat="@drawable/ic_outline_share_24" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greyLine" />
+
+        <TextView
+            android:id="@+id/txtSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_sidemenu"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_13sdp"
+            android:text="Settings"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:fontFamily="@font/cocomat_light"
+            app:drawableStartCompat="@drawable/ic_outline_settings_24"
+            app:drawableLeftCompat="@drawable/ic_outline_settings_24" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greyLine" />
+
+        <TextView
+            android:id="@+id/txtHelpSupport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_sidemenu"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_13sdp"
+            android:text="Help &amp; Support"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:fontFamily="@font/cocomat_light"
+            app:drawableStartCompat="@drawable/ic_outline_contact_support_24"
+            app:drawableLeftCompat="@drawable/ic_outline_contact_support_24" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greyLine" />
+
+        <TextView
+            android:id="@+id/txtLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_sidemenu"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_13sdp"
+            android:text="Logout"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_14"
+            android:fontFamily="@font/cocomat_light"
+            app:drawableStartCompat="@drawable/ic_logout"
+            app:drawableLeftCompat="@drawable/ic_logout" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greyLine" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearHeaderAUM"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offWhiteDark"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="@dimen/_15sdp"
+    android:weightSum="3"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:layout_width="@dimen/_55sdp"
+        android:layout_height="@dimen/_55sdp"
+        android:layout_weight="0.4"
+        android:paddingLeft="@dimen/_15sdp"
+        android:elevation="@dimen/_5sdp"
+        android:src="@drawable/user_profile_icon"
+        android:scaleType="fitCenter"
+        android:contentDescription="User Icon" />
+
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2.2"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit ="marquee_forever"
+        android:singleLine="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_5sdp"
+        android:text="User Name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_size_16"
+        android:fontFamily="@font/cocomat_bold"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:elevation="@dimen/_5sdp"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+        android:scaleType="fitCenter"
+        android:contentDescription="User Icon" />
+
+</LinearLayout>
