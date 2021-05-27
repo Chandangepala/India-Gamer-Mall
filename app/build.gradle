@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -44,4 +45,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     //lib for auto scroll viewpager...
     implementation 'com.github.pzienowicz:androidx-auto-scroll-view-pager:1.2.0'
+    //lib to implement firebase
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
+    //lib to implement firebase analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    //lib for firebase auth
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    //lib to implement firestore
+    implementation 'com.google.firebase:firebase-firestore:23.0.0'
+    //lib to implement cloud firebase storage
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
+    //lib to load image
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 }

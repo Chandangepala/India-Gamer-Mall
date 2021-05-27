@@ -1,6 +1,5 @@
 package com.basic.indiagamermall.activities
 
-import android.R.id
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,8 +18,14 @@ import com.basic.indiagamermall.BuildConfig
 import com.basic.indiagamermall.R
 import com.basic.indiagamermall.adapter.EventViewPagerAdapter
 import com.basic.indiagamermall.adapter.StaggeredRecyclerGameInfoAdapter
+import com.basic.indiagamermall.models.EventModel
 import com.basic.indiagamermall.models.GameInfo
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager
 import java.util.*
 import kotlin.collections.ArrayList
@@ -29,10 +34,22 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
         View.OnClickListener{
 
+    lateinit var auth: FirebaseAuth
     var toolbar: Toolbar? = null
     lateinit var drawer: DrawerLayout
     private val drawerOpen = false
     val arrGameInfoList = ArrayList<GameInfo>()
+    lateinit var fltUploadEventBtn: FloatingActionButton
+    var arrEventImages: ArrayList<String> = ArrayList()
+    var arrEvents: ArrayList<EventModel> = ArrayList()
+    lateinit var eventsAdapter: EventViewPagerAdapter
+    lateinit var fltUploadCategoryBtn: FloatingActionButton
+    var arrProductCatgories: ArrayList<GameInfo> = ArrayList()
+    lateinit var categoryAdapter: StaggeredRecyclerGameInfoAdapter
+
+    lateinit var eventFireStore: FirebaseFirestore
+    lateinit var categoryFirestore: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,16 +57,31 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setupToolbar()    // set toolbar
         initView() //initialization of views
 
+        //To initialize firebase variables
+        initFirebase()
+
+        //To get event data from Firestore
+        getEventDataFS()
+
+        //To get product category data from firestore
+        getProductCategoryDataFS()
+
         //To setup and manage auto scroll view pager...
         setupEventViewPager()
 
         //To fetch items to the arrGameInfoList
-        fetchItems()
+        //fetchItems()
         //To setup recycler view
         setupRecyclerView()
+
     }
 
     fun initView(){
+        auth = Firebase.auth
+        fltUploadEventBtn = findViewById(R.id.flt_add_events)
+        fltUploadEventBtn.setOnClickListener(this)
+        fltUploadCategoryBtn = findViewById(R.id.flt_add_category)
+        fltUploadCategoryBtn.setOnClickListener(this)
         try {
             //Side Menu views
             var txtMyOrder: TextView = findViewById(R.id.txtMyOrder)
@@ -74,6 +106,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    private fun initFirebase(){
+        eventFireStore = FirebaseFirestore.getInstance()
+        categoryFirestore = FirebaseFirestore.getInstance()
+    }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         drawer.closeDrawer(GravityCompat.START) //close navigation drawer
         return true
@@ -117,6 +153,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
                 R.id.txtLogout -> {
                     drawer.closeDrawer(GravityCompat.START)
+                    Firebase.auth.signOut()
+                    startLoginActivity()
+                }
+                R.id.flt_add_events -> {
+                    startEventUploadActivity()
+                }
+                R.id.flt_add_category -> {
+                    startCategoryUploadActivity()
                 }
                 else -> {
                 }
@@ -162,23 +206,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun fetchItems(){
-        addItems(R.drawable.traffic_tour, "Traffic Tour")
-        addItems(R.drawable.unicorn_runner, "Unicorn Runner")
-        addItems(R.drawable.sumos, "Sumos")
-        addItems(R.drawable.warzone, "WarZone")
-        addItems(R.drawable.sumos, "Sumos")
-        addItems(R.drawable.traffic_tour, "Traffic Tour")
-        addItems(R.drawable.unicorn_runner, "Unicorn Runner")
-        addItems(R.drawable.sumos, "Sumos")
-        addItems(R.drawable.warzone, "WarZone")
-        addItems(R.drawable.unicorn_runner, "Unicorn Runner")
-        addItems(R.drawable.traffic_tour, "Traffic Tour")
+        addItems("", "Traffic Tour", "")
+        addItems("", "Unicorn Runner", "")
+        addItems("", "Sumos", "")
+        addItems("", "WarZone", "")
+        addItems("", "Sumos", "")
+        addItems("", "Traffic Tour", "")
+        addItems("", "Unicorn Runner", "")
+        addItems("", "Sumos", "")
+        addItems("", "WarZone", "")
+        addItems("", "Unicorn Runner", "")
+        addItems("", "Traffic Tour", "")
 
     }
 
     //To add Items in the arrGameInfoList
-    fun addItems(img: Int, name : String) {
-        val gameInfo =  GameInfo(img, name)
+    fun addItems(img: String, category : String, key: String) {
+        val gameInfo =  GameInfo(img, category, key)
         arrGameInfoList.add(gameInfo)
     }
 
@@ -187,17 +231,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         recyclerGameInfo.layoutManager = StaggeredGridLayoutManager(2,
             StaggeredGridLayoutManager.VERTICAL)
 
-        recyclerGameInfo.adapter = StaggeredRecyclerGameInfoAdapter(this,arrGameInfoList)
+
+        categoryAdapter = StaggeredRecyclerGameInfoAdapter(this, arrProductCatgories)
+        recyclerGameInfo.adapter = categoryAdapter
     }
 
     //funtion to manage event viewpager
     fun setupEventViewPager(){
         val eventViewPager: AutoScrollViewPager = findViewById(R.id.view_pager_events)
-        var arrEvents: ArrayList<Int> = ArrayList()
-        addEvents(arrEvents)
-        var eventsAdapter: EventViewPagerAdapter = EventViewPagerAdapter(arrEvents, this)
+
+        //addEvents(arrEvents)
+        eventsAdapter = EventViewPagerAdapter(arrEventImages, this)
         eventViewPager.adapter = eventsAdapter
         eventViewPager.startAutoScroll(1000)
+        eventViewPager.setOnClickListener {
+
+            Toast.makeText(applicationContext, "category:" +arrEvents.get(it.id).categoryName , Toast.LENGTH_SHORT).show()
+
+        }
     }
 
     //To add event to arrEvents Arraylist
@@ -207,5 +258,64 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         arrEvents.add(R.drawable.traffic_tour)
         arrEvents.add(R.drawable.unicorn_runner)
         arrEvents.add(R.drawable.warzone)
+    }
+
+    //To call login activity intent
+    private fun startLoginActivity(){
+        var iLogin: Intent = Intent(applicationContext, LoginActivity:: class.java)
+        startActivity(iLogin)
+        finish()
+    }
+
+    private fun startEventUploadActivity(){
+        var iUploadEvent: Intent = Intent(applicationContext, EventUploadActivity:: class.java)
+        startActivity(iUploadEvent)
+    }
+
+    private fun getEventDataFS(){
+        eventFireStore.collection("EventCategories").addSnapshotListener { snapshot, e->
+            val dataId: String
+            for (dataId in snapshot?.documents!!){
+                val eventModel: EventModel = EventModel(
+                    dataId.getString("ImgUrl").toString(),
+                    dataId.getString("Category").toString(),
+                dataId.getString("Key").toString())
+
+                arrEvents.add(eventModel)
+
+                Toast.makeText(applicationContext, dataId.getString("Category"), Toast.LENGTH_SHORT).show()
+
+                try {
+                    dataId.getString("ImgUrl")?.let { arrEventImages.add(it) }
+                    eventsAdapter.notifyDataSetChanged()
+
+                }catch (e: Exception){
+
+                }
+            }
+
+        }
+    }
+
+    //To get product category data from firestore
+    private fun getProductCategoryDataFS(){
+        categoryFirestore.collection("ProductCategories").addSnapshotListener { value, error ->
+
+            for (categoryDataId in value?.documents!!)  {
+                val categoryModel: GameInfo = GameInfo(
+                        categoryDataId.getString("ImgUrl").toString(),
+                        categoryDataId.getString("Category").toString(),
+                        categoryDataId.getString("Key").toString())
+
+                arrProductCatgories.add(categoryModel)
+                categoryAdapter.notifyDataSetChanged()
+            //Toast.makeText(applicationContext, categoryDataId.getString("Category"), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun startCategoryUploadActivity(){
+        val iCatUpload: Intent = Intent(applicationContext, CategoryUploadActivity:: class.java)
+        startActivity(iCatUpload)
     }
 }

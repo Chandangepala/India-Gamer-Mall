@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "826966713760",
+    "project_id": "indiangamingmall",
+    "storage_bucket": "indiangamingmall.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826966713760:android:7b06f3024dc75386ba30c5",
+        "android_client_info": {
+          "package_name": "com.basic.indiagamermall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826966713760-6ojkfkedpehjpqr3nhaqc7cbaor4dc1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.basic.indiagamermall",
+            "certificate_hash": "b82e54366b6bfa059eddeeaf4a48e03bd694316e"
+          }
+        },
+        {
+          "client_id": "826966713760-eds12t8rnnd1l3lfgvetspptllucvuf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaV1Kh8tX8DRjdjZDjB74voJ9x6rxTI7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826966713760-eds12t8rnnd1l3lfgvetspptllucvuf9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

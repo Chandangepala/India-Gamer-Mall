@@ -14,6 +14,7 @@ import com.basic.indiagamermall.R
 import com.basic.indiagamermall.activities.GameSchemeActivity
 import com.basic.indiagamermall.activities.MainActivity
 import com.basic.indiagamermall.models.GameInfo
+import com.bumptech.glide.Glide
 
 class StaggeredRecyclerGameInfoAdapter(val context: Context,private val arrGameInfoList: ArrayList<GameInfo>)
     :RecyclerView.Adapter<StaggeredRecyclerGameInfoAdapter.GameInfoViewHolder>()
@@ -30,8 +31,11 @@ class StaggeredRecyclerGameInfoAdapter(val context: Context,private val arrGameI
     }
 
     override fun onBindViewHolder(holder: GameInfoViewHolder, position: Int) {
-        holder.imgGame.setImageResource(arrGameInfoList.get(position).gameImage)
-        holder.txtGameName.setText(arrGameInfoList.get(position).gameName)
+        //holder.imgGame.setImageResource(arrGameInfoList.get(position).gameImage)
+        Glide.with(context).load(arrGameInfoList.get(position).imgUrl)
+                .into(holder.imgGame)
+
+        holder.txtGameName.setText(arrGameInfoList.get(position).categoryName)
         holder.linearLayoutGame.setOnClickListener{
             val iGameSchemeActivity = Intent(context, GameSchemeActivity :: class.java)
             context.startActivity(iGameSchemeActivity)

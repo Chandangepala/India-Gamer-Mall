@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import com.basic.indiagamermall.R
+import com.bumptech.glide.Glide
 
 
-class EventViewPagerAdapter(var arrImages: ArrayList<Int>, var ctx: Context): PagerAdapter() {
+class EventViewPagerAdapter(var arrImages: ArrayList<String>, var ctx: Context): PagerAdapter() {
 
     lateinit var layoutInflater: LayoutInflater
 
@@ -23,7 +24,8 @@ class EventViewPagerAdapter(var arrImages: ArrayList<Int>, var ctx: Context): Pa
         layoutInflater = LayoutInflater.from(ctx)
         var view: View = layoutInflater.inflate(R.layout.event_vp_card,container, false)
         var eventImg: ImageView = view.findViewById(R.id.event_vp_img)
-        eventImg.setImageResource(arrImages[position])
+        //eventImg.setImageResource(arrImages[position])
+        Glide.with(ctx).load(arrImages[position]).into(eventImg)
         container.addView(view, 0)
         return view
     }

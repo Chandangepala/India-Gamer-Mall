@@ -1,7 +1,8 @@
 package com.basic.indiagamermall.models
 
-data class GameInfo(
-    var gameImage : Int,
-    var gameName : String
+ class GameInfo(
+    var imgUrl : String,
+    var categoryName : String,
+    var key: String
 ) {
 }
