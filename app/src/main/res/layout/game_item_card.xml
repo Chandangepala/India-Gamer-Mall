@@ -3,8 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_3sdp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -18,8 +18,10 @@
             android:id="@+id/imgGame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxHeight="@dimen/_170sdp"
+            android:adjustViewBounds="true"
             android:src="@drawable/ic_baseline_person_24"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             />
 
         <TextView

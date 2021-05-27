@@ -57,7 +57,7 @@
         android:gravity="center"
         android:paddingTop="@dimen/dim_18"
         android:text="Welcome!"
-        android:textColor="@color/darkBlue"
+        android:textColor="@color/white"
         android:textSize="@dimen/font_size_25"
         app:layout_constraintBottom_toTopOf="@+id/txtInfo"
         app:layout_constraintEnd_toEndOf="@+id/imgLogo"
