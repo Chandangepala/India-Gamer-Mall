@@ -1,17 +1,14 @@
 package com.basic.indiagamermall.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.basic.indiagamermall.R
-import com.basic.indiagamermall.models.GameInfo
-import com.basic.indiagamermall.models.GameSchemeResponce
+import com.basic.indiagamermall.models.ProductModel
 
-class RecyclerGameSchemeAdapter(private val arrGameSchemeList: ArrayList<GameSchemeResponce>) :
+class RecyclerGameSchemeAdapter(private val arrGameSchemeList: ArrayList<ProductModel>, val context: Context) :
     RecyclerView.Adapter<RecyclerGameSchemeAdapter.GameSchemeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerGameSchemeAdapter.GameSchemeViewHolder {

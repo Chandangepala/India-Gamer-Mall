@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/app_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IndiaGamerMall">
-        <activity android:name=".activities.CategoryUploadActivity"></activity>
+        <activity android:name=".activities.ProductUploadActivity"></activity>
+        <activity android:name=".activities.CategoryUploadActivity" />
         <activity android:name=".activities.EventUploadActivity" />
         <activity android:name=".activities.GameSchemeActivity" />
         <activity android:name=".activities.LoginActivity" />

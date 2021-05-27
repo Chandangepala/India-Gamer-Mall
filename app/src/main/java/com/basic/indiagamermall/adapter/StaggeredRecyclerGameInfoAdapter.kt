@@ -8,15 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.basic.indiagamermall.R
 import com.basic.indiagamermall.activities.GameSchemeActivity
-import com.basic.indiagamermall.activities.MainActivity
-import com.basic.indiagamermall.models.GameInfo
+import com.basic.indiagamermall.models.CategoryModel
 import com.bumptech.glide.Glide
 
-class StaggeredRecyclerGameInfoAdapter(val context: Context,private val arrGameInfoList: ArrayList<GameInfo>)
+class StaggeredRecyclerGameInfoAdapter(val context: Context,private val arrGameInfoList: ArrayList<CategoryModel>)
     :RecyclerView.Adapter<StaggeredRecyclerGameInfoAdapter.GameInfoViewHolder>()
 {
 
@@ -38,6 +36,7 @@ class StaggeredRecyclerGameInfoAdapter(val context: Context,private val arrGameI
         holder.txtGameName.setText(arrGameInfoList.get(position).categoryName)
         holder.linearLayoutGame.setOnClickListener{
             val iGameSchemeActivity = Intent(context, GameSchemeActivity :: class.java)
+            iGameSchemeActivity.putExtra("categoryName", arrGameInfoList.get(position).categoryName)
             context.startActivity(iGameSchemeActivity)
         }
     }

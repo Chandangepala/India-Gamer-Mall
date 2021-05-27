@@ -19,7 +19,7 @@ import com.basic.indiagamermall.R
 import com.basic.indiagamermall.adapter.EventViewPagerAdapter
 import com.basic.indiagamermall.adapter.StaggeredRecyclerGameInfoAdapter
 import com.basic.indiagamermall.models.EventModel
-import com.basic.indiagamermall.models.GameInfo
+import com.basic.indiagamermall.models.CategoryModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -38,13 +38,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var toolbar: Toolbar? = null
     lateinit var drawer: DrawerLayout
     private val drawerOpen = false
-    val arrGameInfoList = ArrayList<GameInfo>()
+    val arrGameInfoList = ArrayList<CategoryModel>()
     lateinit var fltUploadEventBtn: FloatingActionButton
     var arrEventImages: ArrayList<String> = ArrayList()
     var arrEvents: ArrayList<EventModel> = ArrayList()
     lateinit var eventsAdapter: EventViewPagerAdapter
     lateinit var fltUploadCategoryBtn: FloatingActionButton
-    var arrProductCatgories: ArrayList<GameInfo> = ArrayList()
+    var arrProductCatgories: ArrayList<CategoryModel> = ArrayList()
     lateinit var categoryAdapter: StaggeredRecyclerGameInfoAdapter
 
     lateinit var eventFireStore: FirebaseFirestore
@@ -222,7 +222,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     //To add Items in the arrGameInfoList
     fun addItems(img: String, category : String, key: String) {
-        val gameInfo =  GameInfo(img, category, key)
+        val gameInfo =  CategoryModel(img, category, key)
         arrGameInfoList.add(gameInfo)
     }
 
@@ -302,7 +302,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         categoryFirestore.collection("ProductCategories").addSnapshotListener { value, error ->
 
             for (categoryDataId in value?.documents!!)  {
-                val categoryModel: GameInfo = GameInfo(
+                val categoryModel: CategoryModel = CategoryModel(
                         categoryDataId.getString("ImgUrl").toString(),
                         categoryDataId.getString("Category").toString(),
                         categoryDataId.getString("Key").toString())
