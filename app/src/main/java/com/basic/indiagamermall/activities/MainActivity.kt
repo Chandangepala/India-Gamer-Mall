@@ -231,7 +231,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         recyclerGameInfo.layoutManager = StaggeredGridLayoutManager(2,
             StaggeredGridLayoutManager.VERTICAL)
 
-
         categoryAdapter = StaggeredRecyclerGameInfoAdapter(this, arrProductCatgories)
         recyclerGameInfo.adapter = categoryAdapter
     }
@@ -282,8 +281,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 dataId.getString("Key").toString())
 
                 arrEvents.add(eventModel)
-
-                Toast.makeText(applicationContext, dataId.getString("Category"), Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext, dataId.getString("Category"), Toast.LENGTH_SHORT).show()
 
                 try {
                     dataId.getString("ImgUrl")?.let { arrEventImages.add(it) }

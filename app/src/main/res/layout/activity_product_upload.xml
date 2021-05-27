@@ -57,12 +57,12 @@
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:padding="7sp"
-        android:hint="Product Name"
+        android:hint="Product Price"
         android:background="@drawable/yellow_round_corner_bg"/>
 
 
     <Button
-        android:id="@+id/btn_upload_category"
+        android:id="@+id/btn_upload_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/edt_price_product_upload"
